@@ -1,0 +1,87 @@
+/* Main Styles */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.btn-group-sm > .btn {
+  margin-right: 5px;
+}
+
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.alert {
+  margin-top: 15px;
+}
+
+.dashboard-card {
+  transition: transform 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.status-badge {
+  font-size: 85%;
+}
+
+.status-active {
+  background-color: #28a745;
+}
+
+.status-inactive {
+  background-color: #dc3545;
+}
+
+.time-badge {
+  font-weight: bold;
+}
+
+.action-icons i {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    margin-left: -250px;
+  }
+  .sidebar.active {
+    margin-left: 0;
+  }
+} 

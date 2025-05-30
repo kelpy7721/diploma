@@ -1,0 +1,398 @@
+@use "sass:math";
+@use "sass:color";
+@use 'variables' as vars;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  background-color: vars.$gray-100;
+  color: vars.$gray-800;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Контейнер приложения */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Основной контент */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: vars.$gray-100;
+}
+
+/* Навигация */
+.navbar {
+  box-shadow: vars.$box-shadow-sm;
+
+  .navbar-brand {
+    font-weight: vars.$font-weight-bold;
+    color: vars.$white;
+  }
+
+  .nav-link {
+    position: relative;
+    font-weight: vars.$font-weight-medium;
+    transition: vars.$transition-base;
+
+    &:hover {
+      color: rgba(vars.$white, 0.9) !important;
+    }
+    
+    &.active {
+      color: vars.$white !important;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        width: 80%;
+        height: 3px;
+        background-color: vars.$primary;
+        border-radius: vars.$border-radius-pill;
+      }
+    }
+  }
+}
+
+/* Карточки */
+.card {
+  margin-bottom: 20px;
+  border: none;
+  border-radius: vars.$border-radius;
+  box-shadow: vars.$box-shadow-sm;
+  transition: vars.$transition-hover;
+  
+  &:hover {
+    box-shadow: vars.$box-shadow;
+  }
+
+  .card-header {
+    border-top-left-radius: vars.$border-radius;
+    border-top-right-radius: vars.$border-radius;
+    font-weight: vars.$font-weight-medium;
+    background-color: rgba(vars.$primary, 0.05);
+    border-bottom: 1px solid rgba(vars.$primary, 0.1);
+  }
+  
+  .card-title {
+    font-weight: vars.$font-weight-bold;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Таблицы */
+.table {
+  .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(vars.$primary, 0.03);
+  }
+  
+  .table-hover > tbody > tr:hover > * {
+    background-color: rgba(vars.$primary, 0.05);
+  }
+  
+  th {
+    font-weight: vars.$font-weight-medium;
+    color: vars.$gray-700;
+  }
+}
+
+/* Кнопки */
+.btn {
+  border-radius: vars.$border-radius;
+  transition: vars.$transition-base;
+  font-weight: vars.$font-weight-medium;
+  box-shadow: vars.$box-shadow-sm;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: vars.$box-shadow;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+}
+
+// Новый стиль для кнопок быстрых действий
+.btn-action {
+  background-color: #f5f7fa;
+  border: 1px solid #e1e6ef;
+  color: #495057;
+  text-align: left;
+  padding: 0.75rem;
+  
+  i {
+    transition: all 0.2s ease;
+    color: #6c757d;
+    margin-right: 0.75rem;
+  }
+  
+  &:hover {
+    background-color: #edf0f5;
+    border-color: #d8dee9;
+    color: #212529;
+    
+    i {
+      color: #495057;
+      transform: translateX(3px);
+    }
+  }
+  
+  &:active {
+    background-color: #e2e6ef !important;
+    border-color: #cfd6e4 !important;
+    box-shadow: none !important;
+  }
+  
+  // Варианты для цветных кнопок быстрых действий
+  &.btn-primary {
+    background-color: rgba(vars.$primary, 0.1);
+    border-color: rgba(vars.$primary, 0.2);
+    color: color.scale(vars.$primary, $lightness: -15%);
+    
+    i {
+      color: vars.$primary;
+    }
+    
+    &:hover {
+      background-color: rgba(vars.$primary, 0.2);
+      border-color: rgba(vars.$primary, 0.3);
+      color: color.scale(vars.$primary, $lightness: -25%);
+    }
+    
+    &:active {
+      background-color: rgba(vars.$primary, 0.3) !important;
+      border-color: rgba(vars.$primary, 0.4) !important;
+    }
+  }
+  
+  &.btn-success {
+    background-color: rgba(vars.$success, 0.1);
+    border-color: rgba(vars.$success, 0.2);
+    color: color.scale(vars.$success, $lightness: -15%);
+    
+    i {
+      color: vars.$success;
+    }
+    
+    &:hover {
+      background-color: rgba(vars.$success, 0.2);
+      border-color: rgba(vars.$success, 0.3);
+      color: color.scale(vars.$success, $lightness: -25%);
+    }
+    
+    &:active {
+      background-color: rgba(vars.$success, 0.3) !important;
+      border-color: rgba(vars.$success, 0.4) !important;
+    }
+  }
+  
+  &.btn-info {
+    background-color: rgba(vars.$info, 0.1);
+    border-color: rgba(vars.$info, 0.2);
+    color: color.scale(vars.$info, $lightness: -15%);
+    
+    i {
+      color: vars.$info;
+    }
+    
+    &:hover {
+      background-color: rgba(vars.$info, 0.2);
+      border-color: rgba(vars.$info, 0.3);
+      color: color.scale(vars.$info, $lightness: -25%);
+    }
+    
+    &:active {
+      background-color: rgba(vars.$info, 0.3) !important;
+      border-color: rgba(vars.$info, 0.4) !important;
+    }
+  }
+}
+
+.btn-primary {
+  background-color: vars.$primary;
+  border-color: vars.$primary;
+  
+  &:hover, &:focus {
+    background-color: color.scale(vars.$primary, $lightness: -7%);
+    border-color: color.scale(vars.$primary, $lightness: -7%);
+  }
+}
+
+.btn-success {
+  background-color: vars.$success;
+  border-color: vars.$success;
+  
+  &:hover, &:focus {
+    background-color: color.scale(vars.$success, $lightness: -7%);
+    border-color: color.scale(vars.$success, $lightness: -7%);
+  }
+}
+
+.btn-danger {
+  background-color: vars.$danger;
+  border-color: vars.$danger;
+  
+  &:hover, &:focus {
+    background-color: color.scale(vars.$danger, $lightness: -7%);
+    border-color: color.scale(vars.$danger, $lightness: -7%);
+  }
+}
+
+/* Формы */
+.form-control, .form-select {
+  border-radius: vars.$border-radius;
+  border: 1px solid vars.$gray-300;
+  padding: 0.5rem 0.75rem;
+  transition: vars.$transition-base;
+  
+  &:focus {
+    border-color: vars.$primary;
+    box-shadow: 0 0 0 0.2rem rgba(vars.$primary, 0.25);
+  }
+}
+
+.form-label {
+  font-weight: vars.$font-weight-medium;
+  margin-bottom: 0.5rem;
+  color: vars.$gray-700;
+}
+
+/* Дашборд */
+.dashboard-card {
+  transition: vars.$transition-hover;
+  border-radius: vars.$border-radius;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-header {
+    padding: 1rem;
+    
+    &.bg-primary {
+      background: linear-gradient(135deg, vars.$primary, color.scale(vars.$primary, $lightness: -10%)) !important;
+    }
+    
+    &.bg-success {
+      background: linear-gradient(135deg, vars.$success, color.scale(vars.$success, $lightness: -10%)) !important;
+    }
+  }
+  
+  .d-grid .btn {
+    margin-bottom: 0.75rem;
+    border-radius: vars.$border-radius;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .btn-outline-primary {
+    border-color: rgba(vars.$primary, 0.4);
+    color: vars.$primary;
+    
+    &:hover {
+      background-color: rgba(vars.$primary, 0.1);
+      border-color: vars.$primary;
+      color: vars.$primary;
+    }
+    
+    &:active {
+      background-color: rgba(vars.$primary, 0.2) !important;
+      color: vars.$primary !important;
+    }
+  }
+}
+
+/* Состояния */
+.status-badge {
+  font-size: 85%;
+  padding: 0.35em 0.65em;
+  border-radius: vars.$border-radius-pill;
+}
+
+.hours-badge {
+  display: inline-block;
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  font-size: 0.85em;
+  color: vars.$primary;
+  background-color: rgba(vars.$primary, 0.1);
+  border: 1px solid rgba(vars.$primary, 0.2);
+  border-radius: vars.$border-radius;
+  min-width: 52px;
+  text-align: center;
+}
+
+.status-active {
+  background-color: vars.$success;
+  color: white;
+}
+
+.status-inactive {
+  background-color: vars.$danger;
+  color: white;
+}
+
+.time-badge {
+  font-weight: vars.$font-weight-medium;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-card:hover {
+    transform: none;
+  }
+  
+  .btn {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+/* Отчеты */
+.chart-container {
+  position: relative;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+/* Анимация загрузки */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s infinite;
+  background-color: vars.$gray-200;
+  border-radius: vars.$border-radius;
+  min-height: 1rem;
+} 
