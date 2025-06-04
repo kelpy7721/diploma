@@ -34,8 +34,11 @@ pip install -r requirements.txt
 ```
 python init_db.py
 ```
-
-4. Запустить сервер разработки:
+4. Скомпилировать фронтэнд:
+```
+cd frontend && npm run build
+```
+6. Запустить сервер разработки:
 ```
 python app.py
 ```
