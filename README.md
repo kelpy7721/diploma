@@ -22,7 +22,7 @@
 1. Клонировать репозиторий:
 ```
 git clone <url-репозитория>
-cd time_tracking_system
+cd diploma
 ```
 
 2. Установить зависимости Python:
