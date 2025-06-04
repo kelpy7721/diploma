@@ -21,7 +21,7 @@
 
 1. Клонировать репозиторий:
 ```
-git clone <url-репозитория>
+git clone https://github.com/kelpy7721/diploma.git
 cd diploma
 ```
 
