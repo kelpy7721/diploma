@@ -38,7 +38,7 @@ python init_db.py
 ```
 cd frontend && npm run build
 ```
-6. Запустить сервер разработки:
+5. Запустить сервер разработки:
 ```
 python app.py
 ```
@@ -84,4 +84,4 @@ python app.py
 
 ## Лицензия
 
-MIT 
+Дай бог будет
